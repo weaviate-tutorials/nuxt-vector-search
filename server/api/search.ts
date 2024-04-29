@@ -23,13 +23,19 @@ export default defineEventHandler<{query: { query: string } }>(async (event) => 
   if (!result.success)
     throw result.error.issues
 
+    
+
   // User object is validated and typed!
   const searchTerm = result.data.query
-  const myCollection = client.collections.get('TrackSearcher')
+  // add search
+  const myCollection = client.collections.get('CalvinHarris')
 
-  const response = await myCollection.query.nearText(searchTerm, {
+  const response = await myCollection.query.nearText(searchTerm,
+    {
     limit: 5
   })
+
+  console.log(response.objects)
 
   return response.objects
 })

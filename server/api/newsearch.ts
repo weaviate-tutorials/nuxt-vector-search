@@ -28,13 +28,16 @@ export default defineEventHandler<{query: { query: string } }>(async (event) => 
   // User object is validated and typed!
   const searchTerm = result.data.query
   // add search
-  const myCollection = client.collections.get('TrackSearch')
-  const response = await myCollection.generate.nearText(searchTerm, {
-    groupedTask: `pick your favourite pleeeease and tell me why. also say how confident you are based off results`,
-  }
-    ,{
-    limit: 5
-  })
 
-  return response.generated
+  const myCollection = client.collections.get('CalvinHarris')
+  const response = await myCollection.generate.nearText(searchTerm, {
+    groupedTask: `out of all of these what is your favourite?`
+  },
+    {
+      limit: 5
+    })
+  
+    console.log(response.generated)
+
+  return response.objects
 })
