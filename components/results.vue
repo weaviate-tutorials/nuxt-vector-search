@@ -8,16 +8,16 @@
                 </strong>
                 <div>
                 </div>
-                <div v-for="result in searchResult">
+                <div v-for="item in searchResult">
                     <div class="space-y-4">
                         <details class="group [&_summary::-webkit-details-marker]:hidden" open>
                             <summary
                                 class="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg text-sm p-4 text-gray-900">
                                 <h2 class="font-medium">
-                                    {{ result.properties.title }} by {{ result.properties.rank }}
-                                </h2>
+                                    {{ item.properties.title }} by {{ item.properties.artist }}
+                                </h2>                
                             </summary>
-
+                        
                         </details>
                     </div>
                 </div>

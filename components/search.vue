@@ -21,8 +21,6 @@
 </template>
 
 <script setup>
-
-const numberX = ref(8)
 const searchTerm = ref('')
 
 </script>

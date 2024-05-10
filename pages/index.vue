@@ -3,16 +3,18 @@
       <Cover />
       <Search @run-search="submitSearch" />
       <Loading v-if="loading" />
-      <Results :search-result="searchResult" />
+      <h1 class="text-4xl pt-5 font-bold text-black text-center">
+        {{ searchResult }}
+      </h1>
+      <!-- <Results :search-result="searchResult" /> -->
     </main>
   </template>
   
   
   <script setup lang="ts">
-  import { type TrackSearchResult} from "../types";
   const loading = ref(false)
   
-  const searchResult = ref<TrackSearchResult>()
+  const searchResult = ref()
   
   async function submitSearch(searchTerm: string) {
     loading.value = true
