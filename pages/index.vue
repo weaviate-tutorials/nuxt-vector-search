@@ -17,6 +17,7 @@
   const searchResult = ref()
   
   async function submitSearch(searchTerm: string) {
+    searchResult.value = null
     loading.value = true
     searchResult.value = await $fetch(`/api/search?query=${searchTerm}`)
     loading.value = false
