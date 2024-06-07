@@ -8,5 +8,14 @@ export default defineNuxtConfig({
     weaviateToken: '',
     openai: '',
     cohere: '',
+  },
+  nitro: {
+    experimental: {
+      tasks: true
+    },
+    scheduledTasks: {
+      // Run `db:migrate` task every minute
+      '15 13 * * 1-5': ['db:migrate']
+    }
   }
 })
