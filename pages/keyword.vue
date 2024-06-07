@@ -111,7 +111,7 @@ const posts = ref([
     },
     {
     "rank": 4,
-    "title": "What's Going On",
+    "title": "What's Going On Ibiza",
     "artist": "Marvin Gaye",
     "album": "What's Going On",
     "year": "1971"

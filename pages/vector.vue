@@ -43,18 +43,17 @@
             <div class="p-2">
               <strong class="block p-2 text-xs font-bold uppercase text-black">
                 results
-
                 {{ searchResult.generated }}
               </strong>
               <div>
               </div>
-              <div v-for="result in searchResult">
+              <div v-for="result in searchResult.objects">
                 <div class="space-y-4">
                   <details class="group [&_summary::-webkit-details-marker]:hidden" open>
                     <summary
                       class="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg text-sm p-4 text-gray-900">
                       <h2 class="font-medium">
-                        {{ result.properties.artist }} by  {{ result.properties.artist }} 
+                        {{ result.properties.title }} by  {{ result.properties.artist }} 
                       </h2>
   
                       <svg class="h-5 w-5 shrink-0 transition duration-300 group-open:-rotate-180"
@@ -87,8 +86,9 @@
   const searchTerm = ref('')
   const loading = ref(false)
   
-  const searchResult = ref<TrackSearchResult>()
-  
+  const searchResult = ref()
+  // const searchResult = ref()
+
   async function submitSearch() {
     searchResult.value = await $fetch(`/api/newsearch?query=${searchTerm.value}`)
   }

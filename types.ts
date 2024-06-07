@@ -1,4 +1,4 @@
-import weaviate, { type GenerateObject, type GenerativeReturn, type WeaviateObjectType } from 'weaviate-client'
+import weaviate, { type GenerativeObject, type GenerativeReturn, type WeaviateObject } from 'weaviate-client'
 
 export type QuoteType = {
     quote: string;
@@ -20,10 +20,10 @@ export type TrackSearcher =  {
   }
   
 export type TrackSearchResult = {
-    response: GenerateObject<TrackSearcher>
+    response: GenerativeObject<TrackSearcher>
   
   }
 
 export type SearchResult = {
-    response: WeaviateObjectType<JeopartyCollection>
+    response: WeaviateObject<JeopartyCollection>
   }

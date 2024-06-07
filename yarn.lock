@@ -6207,10 +6207,10 @@ vue@^3.4.21:
     "@vue/server-renderer" "3.4.21"
     "@vue/shared" "3.4.21"
 
-weaviate-client@^3.0.0-beta.23:
-  version "3.0.0-beta.23"
-  resolved "https://registry.yarnpkg.com/weaviate-client/-/weaviate-client-3.0.0-beta.23.tgz#2d0ecc05899cdf67b3689dc89df3b3e3ef6df52a"
-  integrity sha512-K8JiW3XjMcvRNOXkXSAz2CwS7Vlzpgc5hV4ZY+5Vm2NxNTLpTbmBmCHecxB0baaDuzFo3l014wuMgIWFJVfPCg==
+weaviate-client@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/weaviate-client/-/weaviate-client-3.0.3.tgz#386bc30becb62d302bccf5f36502d9bea95309a1"
+  integrity sha512-oL4Zn+VPDYqvztOSIPNq1Bb3AzkB2Dk04vvKhPkZf183+W+jXqMjsaCcsSGukV13YXPW1cnCWX/ixDPJNcY3Iw==
   dependencies:
     graphql "^16.8.1"
     graphql-request "^6.1.0"

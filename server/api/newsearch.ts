@@ -1,5 +1,6 @@
 import weaviate, { WeaviateClient } from "weaviate-client"
 import { z } from 'zod'
+import { TrackSearcher } from "~/types"
 
 const responseSchema = z.object({
   query: z.string(),
@@ -8,7 +9,7 @@ const responseSchema = z.object({
 export default defineEventHandler<{query: { query: string } }>(async (event) => {
   const config = useRuntimeConfig(event)
 
-  const client: WeaviateClient = await weaviate.connectToWCS(
+  const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
     config.weaviateURL,
     {
       authCredentials: new weaviate.ApiKey(config.weaviateToken),
@@ -29,15 +30,14 @@ export default defineEventHandler<{query: { query: string } }>(async (event) => 
   const searchTerm = result.data.query
   // add search
 
-  const myCollection = client.collections.get('CalvinHarris')
-  const response = await myCollection.generate.nearText(searchTerm, {
-    groupedTask: `out of all of these what is your favourite?`
-  },
-    {
-      limit: 5
-    })
-  
-    console.log(response.generated)
+  const myCollection = client.collections.get<TrackSearcher>('CalvinHarris')
 
-  return response.objects
+  const response = await myCollection.generate.nearText(searchTerm,{
+    groupedTask: `what is your favourite song from this list?`
+  }, {
+    limit: 5
+  })
+
+  return response
+  
 })
