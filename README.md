@@ -1,6 +1,6 @@
-# Generative Search with [Weaviate](https://weaviate.io/), Next.js and [Open AI](https://openai.com/)
+# Generative Search with [Weaviate](https://weaviate.io/), Nuxt.js and [Open AI](https://openai.com/)
 
-This repo should help get you started developing with Weaviate and React.
+This repo should help get you started developing with Weaviate and Vue 3.
 
 ![Weaviate]()
 
