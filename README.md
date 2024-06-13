@@ -1,14 +1,14 @@
-# Generative Search with [Weaviate](https://weaviate.io/), Nuxt.js and [Open AI](https://openai.com/)
+# Vector Search and RAG with [Weaviate](https://weaviate.io/), Nuxt.js, [Cohere](https://cohere.com/) and [Open AI](https://openai.com/)
 
-This repo should help get you started developing with Weaviate and Vue 3.
+This repo should help get you started developing RAG Applications with Weaviate and Nuxt.js.
 
-![Weaviate]()
+![Weaviate](https://github.com/weaviate-tutorials/nuxt-vector-search/blob/main/public/cover.png)
 
 ## Installation 
 
 1. Clone the repo with the following command
     ```
-    git clone https://github.com/malgamves/nuxt-typescript-vector-search
+    git clone https://github.com/weaviate-tutorials/nuxt-vector-search
     ```
 
 2. Install the necessary project dependencies with the following command
@@ -18,22 +18,23 @@ This repo should help get you started developing with Weaviate and Vue 3.
 3. Create a Weaviate instance on Weaviate Cloud Services as described in [this guide](https://weaviate.io/developers/weaviate/quickstart#step-2-create-an-instance)
 
 4. Create a `.env` file and add the following keys
-    - your Open AI API key as `OPENAI_KEY` (you can get this in your [Open AI settings](https://platform.openai.com/account/api-keys))
-    - your Weaviate API key as `VITE_WEAVIATE_API_KEY` (you can get this in your [Weaviate dashboard](https://console.weaviate.cloud/dashboard) under sandbox details)
-    - your Weaviate host URL as `VITE_WEAVIATE_HOST_URL` (you can get this in your [Weaviate dashboard](https://console.weaviate.cloud/dashboard) under sandbox details)
+    - your Open AI API key as `NUXT_COHERE` (you can get this in your [Open AI settings](https://platform.openai.com/account/api-keys))
+    - your Cohere API key as `NUXT_OPENAI` (you can get this in your [Cohere settings](https://dashboard.cohere.com/api-keys)
+    - your Weaviate API key as `NUXT_WEAVIATE_TOKEN` (you can get this in your [Weaviate dashboard](https://console.weaviate.cloud/dashboard) under sandbox details)
+    - your Weaviate host URL as `NUXT_WEAVIATE_URL` (you can get this in your [Weaviate dashboard](https://console.weaviate.cloud/dashboard) under sandbox details)
   
 5. Import your data and initialize your collections with the following command
    ```
    yarn run import
    ``` 
-5. Start your Vue.js app with the following command
+5. Start your Nuxt.js app with the following command
     ```
     yarn dev
     ```
 
 6. Search away!!
 
-💫you can tweak the prompt for the generative search by [editing this line of code]()
+💫you can tweak the prompt for the generative search by [editing this line of code](https://github.com/weaviate-tutorials/nuxt-vector-search/blob/1f259625ea2a6ae99f4bef0f4072e0507c1d682c/server/api/rag.ts#L26)
 
 ## 📚 Resources
 Learn more about Weaviate applications
