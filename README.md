@@ -25,7 +25,7 @@ This repo should help get you started developing RAG Applications with Weaviate 
   
 5. Import your data and initialize your collections with the following command
    ```
-   yarn run import
+   # I will add details on how to import your Wiki data soon
    ``` 
 5. Start your Nuxt.js app with the following command
     ```
