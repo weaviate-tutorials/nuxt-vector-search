@@ -1,28 +1,16 @@
-import weaviate, { type WeaviateObjectType } from 'weaviate-client'
+import weaviate, { type GenerativeObject, type WeaviateObject } from 'weaviate-client'
 
-export type QuoteType = {
-    quote: string;
-    author: string;
-    distance: number;
-  };
-
-export type JeopartyCollection = {
-    question: string,
-    answer: string
+export type WikipediaCollection = {
+    title: string,
+    description: string,
+    url: string
   }
-
-export type TrackSearcher =  {
-    year: number,
-    rank: number,
-    title: string
-    artist: string
-    album: string
-  }
-
-export type TrackSearchResult = {
-    response: WeaviateObjectType<TrackSearcher>
+  
+export type GenSearchResult = {
+    response: GenerativeObject<WikipediaCollection>
+  
   }
 
 export type SearchResult = {
-    response: WeaviateObjectType<JeopartyCollection>
+    response: WeaviateObject<WikipediaCollection>
   }
