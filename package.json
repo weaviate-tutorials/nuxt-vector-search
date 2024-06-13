@@ -10,6 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@f3ve/vue-markdown-it": "^0.2.2",
+    "markdown-it-vue": "^1.1.7",
     "nuxt": "^3.11.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",

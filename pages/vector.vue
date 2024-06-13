@@ -41,29 +41,19 @@
             class="item-start absolute flex z-10 mt-2 w-[750px] divide-y divide-gray-100 rounded-md border border-gray-100 bg-slate-200 shadow-lg"
             role="menu">
             <div class="p-2">
-              <strong class="block p-2 text-xs font-bold uppercase text-black">
-                results
-                {{ searchResult.generated }}
+              <strong class="block pb-5 text-xs font-bold  text-black">
+                Results
               </strong>
               <div>
               </div>
               <div v-for="result in searchResult.objects">
                 <div class="space-y-4">
-                  <details class="group [&_summary::-webkit-details-marker]:hidden" open>
-                    <summary
-                      class="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg text-sm p-4 text-gray-900">
-                      <h2 class="font-medium">
-                        {{ result.properties.title }} by  {{ result.properties.artist }} 
-                      </h2>
-  
-                      <svg class="h-5 w-5 shrink-0 transition duration-300 group-open:-rotate-180"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                      </svg>
-
-                    </summary>
-                    
-                  </details>
+                  <a class="font-medium pt-4 underline" :href="result.properties.url">
+                        {{ result.properties.title }} 
+                  </a>
+                      <h1 class="-translate-y-2 w-full">
+                        {{ result.properties.text }} 
+                      </h1>
                 </div>
               </div>
             </div>
@@ -82,15 +72,17 @@
   
   
   <script setup lang="ts">
-  import { type TrackSearchResult } from '~/types';
+  import { type SearchResult } from '~/types';
   const searchTerm = ref('')
   const loading = ref(false)
   
   const searchResult = ref()
-  // const searchResult = ref()
 
   async function submitSearch() {
-    searchResult.value = await $fetch(`/api/newsearch?query=${searchTerm.value}`)
+    searchResult.value = null
+    loading.value = true
+    searchResult.value = await $fetch(`/api/search?query=${searchTerm.value}`)
+    loading.value = false
   }
   
   </script>
