@@ -4,10 +4,10 @@ import { z } from 'zod'
 export default defineLazyEventHandler(async () => {
   const config = useRuntimeConfig()
 
-const client: WeaviateClient = await weaviate.connectToWeaviateCloud(config.weaviateURL,{
-    authCredentials: new weaviate.ApiKey(config.weaviateToken),
+const client: WeaviateClient = await weaviate.connectToWeaviateCloud(config.weaviateHostURL,{
+    authCredentials: new weaviate.ApiKey(config.weaviateReadToken),
     headers: {
-      'X-Cohere-Api-Key': config.cohere
+      'X-Cohere-Api-Key': config.cohereApiKey
     }
   }
 )
@@ -17,11 +17,9 @@ const responseSchema = z.object({
 })
 
 async function vectorSearch(searchTerm:string) {
- const myCollection = client.collections.get('Wikipedia')
-
- const response = await myCollection.query.nearText(searchTerm, { autoLimit: 1 })
-
- return response
+const myCollection = client.collections.get('Wikipedia')
+const response = await myCollection.query.nearText(searchTerm, { autoLimit: 2 })
+return response
 }
 
   return defineEventHandler<{query: { query: string } }>(async (event) => {

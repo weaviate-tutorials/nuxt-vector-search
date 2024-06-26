@@ -18,11 +18,12 @@ This repo should help get you started developing RAG Applications with Weaviate 
 3. Create a Weaviate instance on Weaviate Cloud Services as described in [this guide](https://weaviate.io/developers/weaviate/quickstart#step-2-create-an-instance)
 
 4. Create a `.env` file and add the following keys
-    - your Open AI API key as `NUXT_OPENAI` (you can get this in your [Open AI settings](https://platform.openai.com/account/api-keys))
-    - your Cohere API key as `NUXT_COHERE` (you can get this in your [Cohere settings](https://dashboard.cohere.com/api-keys)
-    - your Weaviate API key as `NUXT_WEAVIATE_TOKEN` (you can get this in your [Weaviate dashboard](https://console.weaviate.cloud/dashboard) under sandbox details)
-    - your Weaviate host URL as `NUXT_WEAVIATE_URL` (you can get this in your [Weaviate dashboard](https://console.weaviate.cloud/dashboard) under sandbox details)
-  
+    - your Open AI API key as `NUXT_OPENAI_API_KEY` (you can get this in your [Open AI settings](https://platform.openai.com/account/api-keys))
+    - your Cohere API key as `NUXT_COHERE_API_KEY` (you can get this in your [Cohere settings](https://dashboard.cohere.com/api-keys)
+    - your Weaviate API key as `NUXT_WEAVIATE_READ_KEY` (you can get this in your [Weaviate dashboard](https://console.weaviate.cloud/dashboard) under sandbox details)
+    - your Weaviate host URL as `NUXT_WEAVIATE_HOST_URL` (you can get this in your [Weaviate dashboard](https://console.weaviate.cloud/dashboard) under sandbox details)
+
+
 5. Import your data and initialize your collections with the following command
    ```
    # I will add details on how to import your Wiki data soon

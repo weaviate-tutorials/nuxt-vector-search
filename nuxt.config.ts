@@ -3,10 +3,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss'],
   runtimeConfig: {
-    githubToken: '',
-    weaviateURL: '',
-    weaviateToken: '',
-    openai: '',
-    cohere: '',
+    weaviateHostURL: '',
+    weaviateReadKey: '',
+    openaiApiKey: '',
+    cohereApiKey: '',
   }
 })
