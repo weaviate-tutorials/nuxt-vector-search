@@ -1,11 +1,12 @@
 import weaviate, { WeaviateClient } from "weaviate-client"
 import { z } from 'zod'
+import { type WikipediaCollection } from "~/types"
 
 export default defineLazyEventHandler(async () => {
   const config = useRuntimeConfig()
 
 const client: WeaviateClient = await weaviate.connectToWeaviateCloud(config.weaviateHostURL,{
-    authCredentials: new weaviate.ApiKey(config.weaviateReadToken),
+    authCredentials: new weaviate.ApiKey(config.weaviateReadKey),
     headers: {
       'X-Cohere-Api-Key': config.cohereApiKey
     }
@@ -17,9 +18,16 @@ const responseSchema = z.object({
 })
 
 async function vectorSearch(searchTerm:string) {
-const myCollection = client.collections.get('Wikipedia')
-const response = await myCollection.query.nearText(searchTerm, { autoLimit: 2 })
-return response
+  const wikiCollection = client.collections.get<WikipediaCollection>('Wikipedia')
+
+  const response = await wikiCollection.query.nearText(searchTerm, {
+    limit: 5,
+    returnMetadata: ['distance']
+
+  })
+
+  return response
+
 }
 
   return defineEventHandler<{query: { query: string } }>(async (event) => {

@@ -72,7 +72,7 @@
   
   
   <script setup lang="ts">
-  import { type SearchResult } from '~/types';
+  import { type WikipediaCollection, type SearchResult } from '~/types';
   const searchTerm = ref('')
   const loading = ref(false)
   
@@ -81,7 +81,7 @@
   async function submitSearch() {
     searchResult.value = null
     loading.value = true
-    searchResult.value = await $fetch(`/api/search?query=${searchTerm.value}`)
+    searchResult.value = await $fetch(`/api/search?query=${searchTerm.value}`) 
     loading.value = false
   }
   

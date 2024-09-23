@@ -1,4 +1,5 @@
 import weaviate, { WeaviateClient } from "weaviate-client"
+import { type WikipediaCollection } from "~/types"
 import { z } from 'zod'
 
 
@@ -20,12 +21,17 @@ const responseSchema = z.object({
 
 
 async function RAG(searchTerm:string) {
-  const myCollection = client.collections.get('Wikipedia')
-const response = await myCollection.generate.nearText(searchTerm,{
-  groupedTask: `you are a middle school teacher, use the information below to answer ${searchTerm} and use 
-  simple words`,
-} ,{ limit: 5 })
-return response
+  const wikiCollection = client.collections.get('Wikipedia')
+
+  const response = await wikiCollection.generate.nearText(searchTerm, {
+    groupedTask: `pretend you are a primary school teacher and explain the answer to ${searchTerm} to me in the
+    the most basic english and a french translation at the end `,
+  },{
+    limit: 5
+  }
+  )
+
+  return response 
 }
 
   return defineEventHandler<{query: { query: string } }>(async (event) => {
