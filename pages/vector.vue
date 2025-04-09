@@ -72,11 +72,12 @@
   
   
   <script setup lang="ts">
+  import { type WeaviateReturn } from 'weaviate-client';
   import { type WikipediaCollection, type SearchResult } from '~/types';
   const searchTerm = ref('')
   const loading = ref(false)
   
-  const searchResult = ref()
+  const searchResult = ref<WeaviateReturn<WikipediaCollection> | null >()
 
   async function submitSearch() {
     searchResult.value = null

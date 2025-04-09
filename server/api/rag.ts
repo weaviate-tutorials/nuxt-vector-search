@@ -7,7 +7,7 @@ export default defineLazyEventHandler(async () => {
   const config = useRuntimeConfig()
 
 const client: WeaviateClient = await weaviate.connectToWeaviateCloud(config.weaviateHostURL,{
-    authCredentials: new weaviate.ApiKey(config.weaviateReadKey),
+    authCredentials: new weaviate.ApiKey(config.weaviateAdminKey),
     headers: {
       'X-OpenAI-Api-Key': config.openaiApiKey,
       'X-Cohere-Api-Key': config.cohereApiKey
@@ -21,17 +21,23 @@ const responseSchema = z.object({
 
 
 async function RAG(searchTerm:string) {
-  const wikiCollection = client.collections.get('Wikipedia')
+  const prompt = `you're my assistant, i want to impress people on a webinar,
+   what item in this list is the most impressive? given my question ${searchTerm}`
 
-  const response = await wikiCollection.generate.nearText(searchTerm, {
-    groupedTask: `pretend you are a primary school teacher and explain the answer to ${searchTerm} to me in the
-    the most basic english and a french translation at the end `,
-  },{
-    limit: 5
-  }
-  )
 
-  return response 
+  const WikipediaCollection = client.collections.use("Wikipedia")
+
+  const response = await WikipediaCollection.generate.nearText(searchTerm,{
+    groupedTask: prompt
+  }, {
+    limit: 4,
+    includeVector: true
+  })
+
+  console.log(response.objects[0].properties.title)
+  console.log(response.objects[0].vectors)
+
+  return response
 }
 
   return defineEventHandler<{query: { query: string } }>(async (event) => {

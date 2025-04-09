@@ -1,4 +1,4 @@
-import weaviate, { WeaviateClient } from "weaviate-client"
+import weaviate, { WeaviateClient, WeaviateReturn } from "weaviate-client"
 import { z } from 'zod'
 import { type WikipediaCollection } from "~/types"
 
@@ -18,15 +18,13 @@ const responseSchema = z.object({
 })
 
 async function vectorSearch(searchTerm:string) {
-  const wikiCollection = client.collections.get<WikipediaCollection>('Wikipedia')
 
-  const response = await wikiCollection.query.nearText(searchTerm, {
-    limit: 5,
-    returnMetadata: ['distance']
-
+  const Wikipedia = client.collections.use<WikipediaCollection>("Wikipedia")
+  const response = await Wikipedia.query.nearText(searchTerm, {
+    limit: 5
   })
-
-  return response
+ 
+  return response.objects
 
 }
 

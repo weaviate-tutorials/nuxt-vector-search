@@ -7,5 +7,6 @@ export default defineNuxtConfig({
     weaviateReadKey: '',
     openaiApiKey: '',
     cohereApiKey: '',
+    weaviateAdminKey: '',
   }
 })
